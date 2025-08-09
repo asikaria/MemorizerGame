@@ -1,0 +1,357 @@
+# Cursor Rules for HTML & CSS Development
+
+You are an HTML and CSS development assistant for the MemorizerGame project. Follow these rules when helping with frontend code:
+
+## Project Context
+- This is a memory game where players memorize strings of digits
+- Focus on creating accessible, responsive, and performant user interfaces
+- Use semantic HTML and modern CSS features
+- Maintain clean, readable, and maintainable markup and styles
+- Follow web accessibility standards (WCAG 2.1 AA)
+
+## HTML Standards
+
+### Semantic Structure
+- Use semantic HTML5 elements (`<header>`, `<main>`, `<section>`, `<article>`, `<nav>`, `<footer>`)
+- Avoid unnecessary `<div>` nesting - prefer semantic alternatives
+- Use proper heading hierarchy (h1 → h2 → h3, etc.)
+- Include meaningful alt text for images and descriptive text for interactive elements
+
+### Accessibility
+- Always include `alt` attributes for images
+- Use `aria-label`, `aria-describedby`, and `aria-labelledby` when needed
+- Ensure proper focus management for keyboard navigation
+- Use semantic elements that screen readers can interpret correctly
+- Include skip links for main content areas
+
+### Form Elements
+- Use proper `<label>` elements associated with form controls
+- Include `required`, `min`, `max`, and `pattern` attributes when appropriate
+- Use `<fieldset>` and `<legend>` for grouped form controls
+- Provide clear error messages and validation feedback
+
+### Examples
+```html
+<!-- ✅ Good - semantic and accessible -->
+<main class="game-container">
+  <section class="game-board" aria-labelledby="game-title">
+    <h1 id="game-title">Memory Game</h1>
+    <div class="score-display" aria-live="polite">
+      Score: <span id="current-score">0</span>
+    </div>
+  </section>
+</main>
+
+<!-- ❌ Bad - non-semantic and inaccessible -->
+<div class="container">
+  <div class="board">
+    <div class="title">Memory Game</div>
+    <div class="score">Score: <span>0</span></div>
+  </div>
+</div>
+```
+
+## CSS Standards
+
+### Naming Conventions
+- Use BEM methodology (Block__Element--Modifier)
+- Use kebab-case for class names (e.g., `game-board`, `score-display`)
+- Use descriptive names that explain purpose, not appearance
+- Avoid generic names like `left`, `right`, `big`, `small`
+
+### CSS Architecture
+- Use CSS custom properties (variables) for consistent theming
+- Organize CSS with logical grouping (layout, typography, components, utilities)
+- Use mobile-first responsive design approach
+- Keep specificity low and avoid `!important`
+- Use CSS Grid and Flexbox for layouts instead of floats
+
+### Performance & Maintainability
+- Minimize CSS selectors (max 3 levels deep)
+- Use CSS custom properties for repeated values
+- Avoid universal selectors (`*`) and overly specific selectors
+- Use CSS containment when appropriate
+- Optimize for critical rendering path
+
+### Examples
+```css
+/* ✅ Good - BEM methodology, custom properties, maintainable */
+:root {
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --spacing-unit: 1rem;
+  --border-radius: 0.25rem;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-unit);
+  padding: calc(var(--spacing-unit) * 2);
+}
+
+.game-board__card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.game-board__card--flipped {
+  transform: rotateY(180deg);
+}
+
+/* ❌ Bad - non-semantic names, high specificity, hard to maintain */
+.container .board .card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container .board .card.flipped {
+  transform: rotateY(180deg);
+}
+```
+
+## Responsive Design
+
+### Breakpoints
+- Use logical breakpoints based on content, not device sizes
+- Mobile-first approach: start with mobile styles, then enhance for larger screens
+- Use CSS Grid and Flexbox for responsive layouts
+- Test across different screen sizes and orientations
+
+### Media Queries
+```css
+/* ✅ Good - logical breakpoints */
+@media (min-width: 768px) {
+  .game-board {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .game-board {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* ❌ Bad - device-specific breakpoints */
+@media (min-width: 768px) { /* iPad */ }
+@media (min-width: 1024px) { /* Desktop */ }
+```
+
+## Game-Specific UI Patterns
+
+### Game States
+- Use clear visual feedback for different game states
+- Implement loading states with skeleton screens or spinners
+- Show progress indicators for multi-step processes
+- Use animations to guide user attention
+
+### Interactive Elements
+- Ensure buttons and interactive elements have sufficient touch targets (min 44px)
+- Provide hover and focus states for all interactive elements
+- Use appropriate cursor styles for different interactions
+- Implement smooth transitions and animations
+
+### Examples
+```css
+/* Game state indicators */
+.game-state--loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.game-state--success {
+  animation: success-pulse 0.5s ease-in-out;
+}
+
+/* Interactive elements */
+.game-button {
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-button:hover,
+.game-button:focus {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+```
+
+## Animation & Transitions
+
+### Performance
+- Use `transform` and `opacity` for animations (GPU-accelerated)
+- Avoid animating `width`, `height`, `top`, `left` properties
+- Use `will-change` property sparingly and only when needed
+- Implement `prefers-reduced-motion` media query support
+
+### Examples
+```css
+/* ✅ Good - GPU-accelerated animations */
+.card-flip {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.card-flip--active {
+  transform: rotateY(180deg);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ❌ Bad - animating layout properties */
+.card-flip {
+  transition: width 0.3s ease, height 0.3s ease;
+}
+```
+
+## Browser Support
+
+### Progressive Enhancement
+- Design for modern browsers but ensure basic functionality works everywhere
+- Use feature queries (`@supports`) for advanced CSS features
+- Provide fallbacks for older browsers when necessary
+- Test across different browsers and devices
+
+### CSS Feature Queries
+```css
+/* ✅ Good - progressive enhancement */
+.card {
+  /* Basic styles for all browsers */
+  border: 1px solid #ccc;
+}
+
+@supports (display: grid) {
+  .card {
+    /* Enhanced styles for grid-supporting browsers */
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+## Code Organization
+
+### File Structure
+- Separate CSS into logical files (base, components, utilities, themes)
+- Use CSS imports or build tools to combine files
+- Keep related styles together
+- Document complex CSS patterns and their purpose
+
+### CSS Comments
+```css
+/* ✅ Good - clear documentation */
+/* Game Board Layout
+   Uses CSS Grid for responsive card layout
+   Cards automatically adjust based on container width */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-unit);
+}
+
+/* ❌ Bad - unclear or missing documentation */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+```
+
+## Testing & Validation
+
+### HTML Validation
+- Validate HTML using W3C validator
+- Check accessibility with tools like axe-core or Lighthouse
+- Test with screen readers and keyboard navigation
+- Ensure proper semantic structure
+
+### CSS Validation
+- Validate CSS syntax
+- Test across different browsers and devices
+- Check for unused CSS rules
+- Verify responsive behavior at different breakpoints
+
+## When Suggesting Code
+
+- Always prioritize accessibility and semantic meaning
+- Use modern CSS features appropriately with fallbacks
+- Consider performance implications of CSS choices
+- Follow the established naming conventions (BEM)
+- Ensure responsive design principles are followed
+- Include proper ARIA attributes when needed
+- Use CSS custom properties for consistent theming
+- Consider the game context and user experience
+
+## Code Examples
+
+When providing examples, use this format:
+```html
+<!-- ✅ Good - follows project standards -->
+<section class="game-controls" aria-labelledby="controls-title">
+  <h2 id="controls-title" class="game-controls__title">Game Controls</h2>
+  <div class="game-controls__buttons">
+    <button class="game-button game-button--primary" type="button">
+      Start Game
+    </button>
+  </div>
+</section>
+
+<!-- ❌ Bad - violates project standards -->
+<div class="controls">
+  <div class="title">Game Controls</div>
+  <div class="buttons">
+    <button class="btn">Start Game</button>
+  </div>
+</div>
+```
+
+```css
+/* ✅ Good - follows project standards */
+.game-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-unit);
+  padding: var(--spacing-unit);
+}
+
+.game-controls__title {
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+/* ❌ Bad - violates project standards */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.controls .title {
+  color: #007bff;
+  font-size: 20px;
+  margin: 0;
+}
+```
+
+Remember: You are helping develop a memory game interface, so prioritize accessibility, responsive design, and smooth user interactions that enhance the gaming experience.
