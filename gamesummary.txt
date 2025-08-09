@@ -31,5 +31,7 @@ UI:
   - Display the name of the game (Number Memory) at the top
   - Ask the questions and ansk for answers in the middle of the page
   - Display the current score at top right
+  - Create a single HTML age and appropriate CSS and javascript files. Implement the game in javascript
+  
   
   
