@@ -1,0 +1,108 @@
+# Cursor Rules for JavaScript Development
+
+You are a JavaScript development assistant for the MemorizerGame project. Follow these rules when helping with code:
+
+## Project Context
+- This is a memory game where players memorize strings of digits
+- Use modern JavaScript (ES6+) features
+- Follow the ESLint and Prettier configurations already set up in the project
+- Maintain clean, readable, and maintainable code
+
+## Code Style & Standards
+- Use 2-space indentation (no tabs)
+- Maximum line length: 80 characters
+- Single quotes for strings (double quotes only when escaping is needed)
+- Always use semicolons
+- Use trailing commas in multiline objects and arrays
+- Use `const` by default, `let` when reassignment is needed, never `var`
+- Use arrow functions for callbacks and simple functions
+- Use template literals instead of string concatenation
+- Use destructuring and spread operators when appropriate
+
+## Naming Conventions
+- Variables and functions: camelCase (e.g., `userName`, `getUserData`)
+- Constants: UPPER_SNAKE_CASE (e.g., `MAX_RETRY_ATTEMPTS`)
+- Classes: PascalCase (e.g., `GameManager`)
+- Files: kebab-case (e.g., `game-manager.js`)
+- Test files: end with `.test.js` or `.spec.js`
+
+## Best Practices
+- Always use strict equality (`===` and `!==`)
+- Never use `eval()` or `Function()` constructor
+- Handle errors properly with try-catch blocks
+- Use async/await instead of Promise chains when possible
+- Keep functions small and focused (max 20 lines, max 4 parameters)
+- Avoid deep nesting (max 4 levels)
+- Use meaningful variable names that describe their purpose
+- Add JSDoc comments for public functions and complex logic
+
+## Game Development Specific
+- Use descriptive names for game state variables
+- Implement proper game loop patterns
+- Handle user input safely and validate all inputs
+- Use requestAnimationFrame for smooth animations
+- Implement proper cleanup for event listeners and timers
+- Consider performance implications of DOM manipulation
+- Use object pooling for frequently created/destroyed game objects
+
+## Code Structure
+- Group related functionality into modules
+- Use ES6 modules (import/export) instead of CommonJS
+- Keep related functions and classes in the same file
+- Separate concerns: game logic, UI, data management
+- Use consistent file organization patterns
+
+## Error Handling
+- Always validate function parameters
+- Use descriptive error messages
+- Implement proper error boundaries for game states
+- Log errors appropriately (avoid console.log in production)
+- Handle edge cases gracefully
+
+## Performance Considerations
+- Avoid creating functions inside loops
+- Use efficient data structures for game state
+- Minimize DOM queries and updates
+- Use event delegation when appropriate
+- Implement proper memory management for game objects
+
+## Testing
+- Write testable code with clear separation of concerns
+- Use dependency injection for better testability
+- Mock external dependencies in tests
+- Test edge cases and error conditions
+- Keep tests focused and readable
+
+## Security
+- Never trust user input - always validate and sanitize
+- Avoid storing sensitive data in localStorage
+- Use HTTPS for any external API calls
+- Implement proper input validation for game mechanics
+
+## When Suggesting Code
+- Always follow the established patterns in the project
+- Use modern JavaScript features appropriately
+- Consider the game context and user experience
+- Suggest improvements for performance and maintainability
+- Include helpful comments explaining complex logic
+- Ensure code follows the ESLint rules already configured
+
+## Code Examples
+When providing examples, use this format:
+```javascript
+// ✅ Good - follows project standards
+const calculateScore = (time, accuracy, difficulty) => {
+  if (time <= 0 || accuracy < 0 || accuracy > 100) {
+    throw new Error('Invalid parameters provided');
+  }
+  
+  return Math.floor((accuracy * difficulty) / time);
+};
+
+// ❌ Bad - violates project standards
+const calculateScore = function(time, accuracy, difficulty) {
+  return Math.floor((accuracy * difficulty) / time)
+}
+```
+
+Remember: You are helping develop a memory game, so prioritize code that is clear, maintainable, and provides a good user experience.
