@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Memory Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Number Memory</h1>
+    <div class="score-container">
+      <span class="score-label">Score:</span>
+      <span class="score" id="score">0</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="game-container">
+      <div class="question-section" id="questionSection">
+        <h2>Memorize this number:</h2>
+        <div class="number-display" id="numberDisplay"></div>
+        <div class="timer" id="timer"></div>
+      </div>
+
+      <div class="answer-section" id="answerSection" style="display: none;">
+        <h2>Enter the number you memorized:</h2>
+        <form id="answerForm" class="answer-form">
+          <input 
+            type="text" 
+            id="answerInput" 
+            class="answer-input" 
+            placeholder="Enter digits only"
+            maxlength="10"
+            pattern="[0-9]*"
+            inputmode="numeric"
+            autocomplete="off"
+            required
+          >
+          <button type="submit" class="submit-btn">Submit Answer</button>
+        </form>
+      </div>
+
+      <div class="result-section" id="resultSection" style="display: none;">
+        <div class="result-icon" id="resultIcon"></div>
+        <div class="result-text" id="resultText"></div>
+        <div class="correct-answer" id="correctAnswer"></div>
+        <div class="user-answer" id="userAnswer"></div>
+        <button class="next-btn" id="nextBtn">Next Round</button>
+      </div>
+
+      <div class="game-info">
+        <p class="current-length">Current length: <span id="currentLength">6</span> digits</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
