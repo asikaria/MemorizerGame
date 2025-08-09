@@ -1,0 +1,35 @@
+create a single page HTML/css/javascript game, with the following requirements:
+
+Purpose:
+To show a string of numerical digits and ask user to repeat, to test ability to memorize the digits
+
+
+Rules and gameplay:
+  - Initially, start with displaying 6-digit numbers as the current length
+  - Generate a random number of the current length and isplay the number in big font (say, size 20)for 3 seconds. Let's call this the question, or, the number to memorize
+  - Then have a 1 secong pause with the number hidden
+  - Then ask the user for the number. Let's call this the answer
+  - If the number entered matches what was asked, then the answer is correct - display a green checkmark with the word "Correct!" for 1 second, and increase score by one
+  - If the number entered does nto match what was asked, then display a red X with the word "Wrong!" and show the correct answer along with the answer the user entered. Decrease score by one
+  - When diplaying the question, group the digits this way:
+	- when displaying 6-digit numbers, show as two groups of three (e.g., 123 456)
+	- when displaying 7-digit numbers, show as two groups, one of three and one of four (e.g., 123 4567)
+	- when displaying 8-digit numbers, show as two groups of four (e.g., 1234 5678)
+	- when displaying 9-digit numbers, show as three groups of three (e.g., 123 456 789)
+	- when displaying 10-digit numbers, show as two groups of three and one group of four (e.g., 123 456 7890)
+
+Score keeping:
+  - Score starts at zero
+  - Score can not go below zero. If score becomes negative, set it to zero
+  - Every time user gets the answer correctly, one is added to the score
+  - Every time user get answer wrong, one is subtracted fromt the score
+  - Whenever score gets above 10, increase the number of digits (current length) by 1 (e.g., if current length is 6, make it 7)
+   Display current score onthe top right of the window
+
+UI:
+  - Keep the UI clean with a plain and light color background
+  - Display the name of the game (Number Memory) at the top
+  - Ask the questions and ansk for answers in the middle of the page
+  - Display the current score at top right
+  
+  
