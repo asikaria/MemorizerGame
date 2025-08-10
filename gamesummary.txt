@@ -6,7 +6,10 @@ To show a string of numerical digits and ask user to repeat, to test ability to 
 Technology:
 - Generate a single page html files
 - Generate the appropriate css
-- Creat the core logic in javascript and put it in a javascript file
+- Create the core logic in javascript and put it in a javascript file
+- Browser compatibility: game should be compatible with all modern browsers
+- Device compatibility: Game should be compatible with modern computer OSes (Windows 10, Windows 11, Mac, Linux)
+- Mobile device compatibility: Game should be compatible with running in the browser on ios and android (iphone, ipad, android phones and android tablets)
 - Write clean and concise code
 
 Rules and gameplay:
