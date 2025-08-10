@@ -3,6 +3,11 @@ create a single page HTML/css/javascript game, with the following requirements:
 Purpose:
 To show a string of numerical digits and ask user to repeat, to test ability to memorize the digits
 
+Technology:
+- Generate a single page html files
+- Generate the appropriate css
+- Creat the core logic in javascript and put it in a javascript file
+- Write clean and concise code
 
 Rules and gameplay:
   - Initially, start with displaying 6-digit numbers as the current length
