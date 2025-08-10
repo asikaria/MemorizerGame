@@ -41,6 +41,9 @@ Level up/down:
  - When score gets to 5, set the number of digits (current length) to 7
  - For every 7-point increase in score, increase the number of digits (current length) by 1 (e.g., when score gets to 12, set the number of digits (current length) to 8, and so on)
  - for every 5-point decrease in score, decrease the number of digits (current length) by 1
+ - change duration the question is displayed. Start with 2.5 seconds for the 6-digit number. 
+ - For every additional digit, increase the duration by 0.5 seconds. e.g., when the question is 7-digits, the duration shoud be 3 seconds. When the question is 8 digits, the duration should be 3.5 seconds, etc. 
+ - Duration shoud change with the number of digits as game levels up and levels down.
 
 UI:
   - Keep the UI clean with a plain and light color background

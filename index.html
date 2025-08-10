@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Number Memory</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="game-container">
+    <header class="game-header">
+      <h1 class="game-title">Number Memory</h1>
+      <div class="score-container">
+        <span class="score-label">Score:</span>
+        <span class="score-value" id="score">0</span>
+        <div class="level-change" id="levelChange" aria-live="polite"></div>
+      </div>
+    </header>
+
+    <main class="game-main">
+      <section class="game-phase" id="gamePhase">
+        <div class="question-container" id="questionContainer">
+          <h2 class="phase-title">Memorize this number:</h2>
+          <div class="number-display" id="numberDisplay" aria-live="assertive"></div>
+        </div>
+
+        <div class="answer-container" id="answerContainer" style="display: none;">
+          <h2 class="phase-title">Enter the number you memorized:</h2>
+          <form class="answer-form" id="answerForm" novalidate>
+            <input
+              type="text"
+              id="answerInput"
+              class="answer-input"
+              placeholder="Enter number here..."
+              maxlength="64"
+              inputmode="numeric"
+              pattern="\\d*"
+              autocomplete="off"
+              aria-label="Your memorized number"
+            />
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        </div>
+
+        <div class="result-container" id="resultContainer" style="display: none;">
+          <div class="result-icon" id="resultIcon" aria-hidden="true"></div>
+          <div class="result-text" id="resultText" aria-live="polite"></div>
+          <div class="correct-answer" id="correctAnswer"></div>
+          <div class="user-answer" id="userAnswer"></div>
+        </div>
+      </section>
+
+      <aside class="game-info">
+        <p class="current-length">Current length: <span id="currentLength">6</span> digits</p>
+      </aside>
+    </main>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
