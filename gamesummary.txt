@@ -18,12 +18,12 @@ Rules and gameplay:
   - If the number entered matches what was asked, then the answer is correct - display a green checkmark with the word "Correct!" for 1 second, and increase score by one
   - If the number entered does not match what was asked, then display a red X with the word "Wrong!" and show the correct answer along with the answer the user entered. Decrease score by one. Display the result for 1 second and move on to the next round automatically
   - When diplaying the question, group the digits this way:
-	- when displaying 6-digit numbers, show as two groups of three (e.g., 123 456)
-	- when displaying 7-digit numbers, show as two groups, one of three and one of four (e.g., 123 4567)
-	- when displaying 8-digit numbers, show as two groups of four (e.g., 1234 5678)
-	- when displaying 9-digit numbers, show as three groups of three (e.g., 123 456 789)
-	- when displaying 10-digit numbers, show as two groups of three and one group of four (e.g., 123 456 7890)
-	- for numbers with more than 10 digits, display in groups of 4 and the last group contains the remaining digits
+    - when displaying 6-digit numbers, show as two groups of three (e.g., 123 456)
+    - when displaying 7-digit numbers, show as two groups, one of three and one of four (e.g., 123 4567)
+    - when displaying 8-digit numbers, show as two groups of four (e.g., 1234 5678)
+    - when displaying 9-digit numbers, show as three groups of three (e.g., 123 456 789)
+    - when displaying 10-digit numbers, show as two groups of three and one group of four (e.g., 123 456 7890)
+    - for numbers with more than 10 digits, display in groups of 4 and the last group contains the remaining digits
 
 Score keeping:
   - Score starts at zero
