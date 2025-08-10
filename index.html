@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Memory</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="game-title">Number Memory</h1>
+      <div class="score-container">
+        <div class="score">Score: <span id="score">0</span></div>
+        <div class="level-info" id="levelInfo"></div>
+      </div>
+    </header>
+
+    <main class="game-area">
+      <div class="question-container" id="questionContainer">
+        <div class="question" id="question"></div>
+      </div>
+
+      <div class="answer-container" id="answerContainer" style="display: none;">
+        <label for="answerInput">Enter the number:</label>
+        <input 
+          type="text" 
+          id="answerInput" 
+          placeholder="Enter digits only"
+          maxlength="20"
+          autocomplete="off"
+        >
+        <button id="submitBtn">Submit</button>
+      </div>
+
+      <div class="result-container" id="resultContainer" style="display: none;">
+        <div class="result" id="result"></div>
+        <div class="correct-answer" id="correctAnswer"></div>
+        <div class="user-answer" id="userAnswer"></div>
+      </div>
+
+      <div class="game-controls">
+        <button id="startBtn" class="start-btn">Start Game</button>
+        <button id="resetBtn" class="reset-btn" style="display: none;">Reset Game</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
